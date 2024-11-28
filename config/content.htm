@@ -67,7 +67,60 @@ print_circle()
 <p>題目二:(<a href="https://mdecp2024.github.io/hw-yun-0705/content/Brython.html?src=https://gist.githubusercontent.com/yun-0705/264d920807f1a7554f985e1bf8f4244c/raw/d2685d1184d10040e7424a6c6ed8cece845f5b3e/w11-hw.py">以方塊畫出空心圓</a>)</p>
 <p>心得:跟題目一一樣是靠ai打出<span>需要的brython程式，需要注意的地方在於讓方塊11*11(為了讓方塊有中心點)，該程式篇幅較上一題題目還長，理解程度還可以，但還是有看不懂的地方需要多認識一下。</span></p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/57BteDRUkDQ" width="560"></iframe></p>
+<p>程式:</p>
 <p></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import html
+from browser import document as doc
+
+# 利用 html 建立 canvas 超文件物件
+canvas = html.CANVAS(width=400, height=400)
+brython_div = doc["brython_div1"]
+brython_div &lt;= canvas
+
+# 每一格的 pixel 數
+gs = 20
+
+# gs*tc = canvas width and height
+ctx = canvas.getContext("2d")
+
+def dRect(lux, luy, w, h, s=1, c='#ff0000'):
+    ctx.lineWidth = s
+    ctx.strokeStyle = c
+    ctx.beginPath()
+    ctx.rect(lux, luy, w, h)
+    ctx.stroke()
+
+def grid(width, height, grid_pix):
+    # x 方向共 width 格
+    # y 方向共 height 格
+    # grid_pix, 每一個的 pixel 點數
+    # 利用迴圈與座標增量繪圖
+    for i in range(width):
+        for j in range(height):
+            dRect(i*grid_pix, j*grid_pix, grid_pix, grid_pix, 1, "lightgrey")
+
+def fill(x, y, color):
+    # 填充指定格子
+    ctx.fillStyle = color
+    ctx.fillRect(x * gs, y * gs, gs, gs)
+
+def draw_hollow_circle(cx, cy, radius):
+    # cx, cy: 圆心坐标 (以格子为单位)
+    # radius: 半径 (以格子为单位)
+    for x in range(-radius, radius + 1):
+        for y in range(-radius, radius + 1):
+            # 检查点是否在圆的边缘
+            distance_squared = x**2 + y**2
+            if radius**2 - radius &lt;= distance_squared &lt;= radius**2 + radius:
+                fill(cx + x, cy + y, "black")
+
+# 繪製 20x20 網格
+grid(20, 20, gs)
+
+# 在 (10, 10) 格為圓心繪製空心圓，半徑為 5 格
+draw_hollow_circle(10, 10, 5)
+</pre>
+<p><br/><br/></p>
 <p></p><h3>w10</h3>
 <p><br/><a href="https://youtu.be/tccSgnxZb5w"></a>題目一:</p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/L-sMBIPEoeU" width="560"></iframe></p>
