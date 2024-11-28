@@ -45,12 +45,30 @@
 <p><span>題目一:(<a href="https://mdecp2024.github.io/hw-yun-0705/content/Brython.html?src=https://gist.githubusercontent.com/yun-0705/ce93a836008e04479727eeba5c8d1e9d/raw/0533bb40517b70c105a313b88913f39f61870ea7/w11-hw.py">以"*"畫出空心圓</a>)</span></p>
 <p><span>心得:利用ai打出需要的brython程式，過程中嘗試了解ai所打出程式的意思，但有理解的地方不多，還需要多加努力。</span></p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/tccSgnxZb5w" width="560"></iframe></p>
+<p>程式:</p>
+<p></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">def print_circle():
+    # 11x11 的字元區域，圓心在 (5, 5)，半徑為 5
+    cx, cy, r = 5, 5, 5
+    
+    # 繪製空心圓
+    for y in range(11):
+        for x in range(11):
+            # 計算 (x, y) 是否在圓邊上
+            if abs((x - cx)**2 + (y - cy)**2 - r**2) &lt; 2:
+                print('*', end=' ')
+            else:
+                print(' ', end=' ')
+        print()  # 換行
+
+# 呼叫函數顯示圓形
+print_circle()
+</pre>
 <p>題目二:(<a href="https://mdecp2024.github.io/hw-yun-0705/content/Brython.html?src=https://gist.githubusercontent.com/yun-0705/264d920807f1a7554f985e1bf8f4244c/raw/d2685d1184d10040e7424a6c6ed8cece845f5b3e/w11-hw.py">以方塊畫出空心圓</a>)</p>
 <p>心得:跟題目一一樣是靠ai打出<span>需要的brython程式，需要注意的地方在於讓方塊11*11(為了讓方塊有中心點)，該程式篇幅較上一題題目還長，理解程度還可以，但還是有看不懂的地方需要多認識一下。</span></p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/57BteDRUkDQ" width="560"></iframe></p>
 <p></p>
-<p></p>
-<h3>w10</h3>
+<p></p><h3>w10</h3>
 <p><br/><a href="https://youtu.be/tccSgnxZb5w"></a>題目一:</p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/L-sMBIPEoeU" width="560"></iframe></p>
 <p>題目二:</p>
