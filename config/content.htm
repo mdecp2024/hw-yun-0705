@@ -77,6 +77,16 @@ ctx.stroke()
 
 # 3. 繪製兩個外切圓 (黑色)
 ctx.strokeStyle = 'black'  # 設定圓的顏色為黑色
+
+# 第一個矩形的外切圓
+ctx.beginPath()
+ctx.arc(200, 200, 141.4, 0, 2 * 3.14)  # 圓心在(200, 200)，半徑為141.4（sqrt(2) * 邊長的一半）
+ctx.stroke()
+
+# 第二個矩形的外切圓
+ctx.beginPath()
+ctx.arc(300, 300, 141.4, 0, 2 * 3.14)  # 圓心在(300, 300)，半徑為141.4
+ctx.stroke()
 </script><h3>w12</h3>
 <p>簡易for迴圈程式(<a href="https://mdecp2024.github.io/hw-yun-0705/content/Brython.html?src=https://gist.githubusercontent.com/yun-0705/4e94b1a5f404a4210410446c0aa7ca36/raw/a23a585726f1c964e8f41313c7e5e42399d169ad/w12.py">for迴圈</a>)</p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/jmWgUgZ6WI8" width="560"></iframe></p>

@@ -179,6 +179,16 @@ ctx.stroke()
 
 # 3. 繪製兩個外切圓 (黑色)
 ctx.strokeStyle = 'black'  # 設定圓的顏色為黑色
+
+# 第一個矩形的外切圓
+ctx.beginPath()
+ctx.arc(200, 200, 141.4, 0, 2 * 3.14)  # 圓心在(200, 200)，半徑為141.4（sqrt(2) * 邊長的一半）
+ctx.stroke()
+
+# 第二個矩形的外切圓
+ctx.beginPath()
+ctx.arc(300, 300, 141.4, 0, 2 * 3.14)  # 圓心在(300, 300)，半徑為141.4
+ctx.stroke()
 </script><br />HW 1 Exam << <a href='HW 1 Exam.html'>Previous</a> <a href='w12.html'>Next</a> >> w12</div>
         
     <!-- footer -->
