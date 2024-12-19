@@ -130,7 +130,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='About.html'>About</a><li><a href='Attendance.html'>Attendance</a><li class='has-children'><a href='HW 1.html'>HW 1</a><ul class='dropdown'><li class='has-children'><a href='HW 1 Exam.html'>HW 1 Exam</a><ul class='dropdown'><li><a href='w14_ex.html'>w14_ex</a><li><a href='w13_hw.html'>w13_hw</a><li><a href='w12.html'>w12</a><li><a href='w11_hw.html'>w11_hw</a><li><a href='w10.html'>w10</a><li><a href='w7.html'>w7</a></li></li></ul></ul><li class='has-children'><a href='HW 2.html'>HW 2</a><ul class='dropdown'><li><a href='HW 2 Exam.html'>HW 2 Exam</a></li></ul><li class='has-children'><a href='HW 3.html'>HW 3</a><ul class='dropdown'><li><a href='HW 3 Exam.html'>HW 3 Exam</a></li></ul><li class='has-children'><a href='HW 4.html'>HW 4</a><ul class='dropdown'><li><a href='HW 4 Exam.html'>HW 4 Exam</a></li></ul><li><a href='Final Report.html'>Final Report</a><li><a href='Brython.html'>Brython</a></li>
+                     <li><a href='About.html'>About</a><li><a href='Attendance.html'>Attendance</a><li class='has-children'><a href='HW 1.html'>HW 1</a><ul class='dropdown'><li class='has-children'><a href='HW 1 Exam.html'>HW 1 Exam</a><ul class='dropdown'><li><a href='w15.html'>w15</a><li><a href='w14_ex.html'>w14_ex</a><li><a href='w13_hw.html'>w13_hw</a><li><a href='w12.html'>w12</a><li><a href='w11_hw.html'>w11_hw</a><li><a href='w10.html'>w10</a><li><a href='w7.html'>w7</a></li></li></ul></ul><li class='has-children'><a href='HW 2.html'>HW 2</a><ul class='dropdown'><li><a href='HW 2 Exam.html'>HW 2 Exam</a></li></ul><li class='has-children'><a href='HW 3.html'>HW 3</a><ul class='dropdown'><li><a href='HW 3 Exam.html'>HW 3 Exam</a></li></ul><li class='has-children'><a href='HW 4.html'>HW 4</a><ul class='dropdown'><li><a href='HW 4 Exam.html'>HW 4 Exam</a></li></ul><li><a href='Final Report.html'>Final Report</a><li><a href='Brython.html'>Brython</a></li>
                       </ul>
                 </nav>
               </div>
@@ -141,7 +141,7 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">HW 1 Exam << <a href='HW 1 Exam.html'>Previous</a> <a href='w13_hw.html'>Next</a> >> w13_hw<br /><h1>w14_ex</h1>
+    <div id="tipue_search_content">w15 << <a href='w15.html'>Previous</a> <a href='w13_hw.html'>Next</a> >> w13_hw<br /><h1>w14_ex</h1>
 <p>三個圓相切</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import html
 from browser import document as doc
@@ -271,7 +271,88 @@ x3, y3, r3 = 200, 100, 100  # 圓3：圓心 (200, 100)，半徑 100
 # 呼叫畫圓函式，並繪製三個圓
 draw_circles(x1, y1, r1, x2, y2, r2, x3, y3, r3)
 </pre>
-<p></p><br />HW 1 Exam << <a href='HW 1 Exam.html'>Previous</a> <a href='w13_hw.html'>Next</a> >> w13_hw</div>
+<p></p>
+<p>隨機圓相切</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import html
+from browser import document as doc
+import random
+import math
+
+# 定義一個函式來初始化畫布
+def initialize_canvas(canvas_width=400, canvas_height=400, id="brython_div1"):
+    """
+    初始化畫布，創建一個指定大小的 Canvas 元素，並將其加到 HTML 文件中。
+    返回畫布元素和它的 2D 繪圖上下文。
+    """
+    canvas = html.CANVAS(width=canvas_width, height=canvas_height)
+    brython_div = doc[id]
+    brython_div &lt;= canvas
+    ctx = canvas.getContext("2d")
+    return canvas, ctx
+
+# 定義一個隨機顏色生成函式
+def random_color_generator():
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    return f"rgb({r}, {g}, {b})"
+
+# 判斷點是否在圓內
+def is_point_in_circle(px, py, cx, cy, r):
+    return (px - cx) ** 2 + (py - cy) ** 2 &lt;= r ** 2
+
+# 檢查所有圓是否有重疊
+def ensure_no_isolated_circles(circles):
+    overlap = [False] * len(circles)
+    for i in range(len(circles)):
+        for j in range(i + 1, len(circles)):
+            cx1, cy1, r1 = circles[i]
+            cx2, cy2, r2 = circles[j]
+            distance = math.sqrt((cx1 - cx2) ** 2 + (cy1 - cy2) ** 2)
+            if distance &lt;= r1 + r2:  # 判斷是否有重疊
+                overlap[i] = True
+                overlap[j] = True
+    return all(overlap)
+
+# 使用者設定的多個圓，並進行掃描線填充
+def draw_circles():
+    canvas, ctx = initialize_canvas(400, 400)
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+    color_dict = {}
+
+    # 隨機生成 5 到 10 個圓，確保沒有圓是孤立的
+    while True:
+        num_circles = random.randint(5, 10)
+        circles = [
+            (random.randint(50, 350), random.randint(50, 350), random.randint(50, 100))
+            for _ in range(num_circles)
+        ]
+        if ensure_no_isolated_circles(circles):
+            break
+
+    for py in range(0, canvas.height):
+        for px in range(0, canvas.width):
+            overlapping_indices = []
+
+            for i, (cx, cy, r) in enumerate(circles):
+                if is_point_in_circle(px, py, cx, cy, r):
+                    overlapping_indices.append(i)
+
+            if overlapping_indices:
+                overlap_key = "_".join(map(str, sorted(overlapping_indices)))
+                if overlap_key not in color_dict:
+                    color_dict[overlap_key] = random_color_generator()
+                current_color = color_dict[overlap_key]
+            else:
+                current_color = "white"
+
+            ctx.fillStyle = current_color
+            ctx.fillRect(px, py, 1, 1)
+
+draw_circles()</pre>
+<p></p>
+<br />w15 << <a href='w15.html'>Previous</a> <a href='w13_hw.html'>Next</a> >> w13_hw</div>
         
     <!-- footer -->
       <div class="container">
