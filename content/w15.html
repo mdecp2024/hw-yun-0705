@@ -163,7 +163,17 @@ def addto(start, end):
 # 呼叫函數並顯示結果
 result = addto(1, 100)
 print(f"從 1 加到 100 的總和是: {result}")</pre>
-<p>(<a href="https://mdecp2024.github.io/hw-yun-0705/content/Brython.html?src=https://gist.githubusercontent.com/yun-0705/a121835f2c24df3d6fb087ffd4132d48/raw/1aa4f22279b94baade4cbdc8840bb64671642f04/w15.py">add_only_even</a>)第三題</p><br />HW 1 Exam << <a href='HW 1 Exam.html'>Previous</a> <a href='w14_ex.html'>Next</a> >> w14_ex</div>
+<p>(<a href="https://mdecp2024.github.io/hw-yun-0705/content/Brython.html?src=https://gist.githubusercontent.com/yun-0705/a121835f2c24df3d6fb087ffd4132d48/raw/1aa4f22279b94baade4cbdc8840bb64671642f04/w15.py">add_only_even</a>)第三題</p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">def add_1_to_100():
+    total = 0
+    for num in range(1, 101):  # 從 1 到 100 進行遍歷
+        if num % 2 == 0:  # 只累加偶數
+            total += num  # 累加偶數到 total
+    return total
+
+result = add_1_to_100()
+print(result)  # 輸出 2550</pre>
+<p></p><br />HW 1 Exam << <a href='HW 1 Exam.html'>Previous</a> <a href='w14_ex.html'>Next</a> >> w14_ex</div>
         
     <!-- footer -->
       <div class="container">
