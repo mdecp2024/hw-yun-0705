@@ -86,7 +86,29 @@ print(result)  # 輸出 2550</pre>
 # 計算從 1 到 100 的總和，並避開包含 '8' 的數字
 result = add_avoid_8(1, 100)
 print(result)  # 輸出結果</pre>
-<p>(<a href="https://mdecp2024.github.io/hw-yun-0705/content/Brython.html?src=https://gist.githubusercontent.com/yun-0705/ba09af804ff7547a391ce8e979f949b7/raw/2f002c3eacb7ca2ffaf1b364630a5a759ba1845f/w15.py">w15第五題</a>)<br/><br/></p><h3>w14_ex</h3>
+<p>(<a href="https://mdecp2024.github.io/hw-yun-0705/content/Brython.html?src=https://gist.githubusercontent.com/yun-0705/ba09af804ff7547a391ce8e979f949b7/raw/2f002c3eacb7ca2ffaf1b364630a5a759ba1845f/w15.py">w15第五題</a>)</p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">def add_only_even(init, addto):
+    total = 0
+    for i in range(init, addto + 1):
+        if i % 2 == 0:  # 檢查是否是偶數
+            total += i
+    print(f"Even sum: {total}")
+    return total
+
+def avoid8(init, addto):
+    total = 0
+    for i in range(init, addto + 1):
+        if "8" in str(i):  # 判斷數字中是否包含 '8'
+            pass
+        else:
+            total += i
+    print(f"Sum avoiding 8: {total}")
+    return total
+
+# 呼叫函式並計算
+add_only_even(1, 100)  # 計算 1 到 100 的偶數總和
+avoid8(1, 100)         # 計算 1 到 100 的總和，避開包含 '8' 的數字</pre>
+<p><br/><br/></p><h3>w14_ex</h3>
 <p>三個圓相切</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import html
 from browser import document as doc
