@@ -174,7 +174,21 @@ print(f"從 1 加到 100 的總和是: {result}")</pre>
 result = add_1_to_100()
 print(result)  # 輸出 2550</pre>
 <p>(<a href="https://mdecp2024.github.io/hw-yun-0705/content/Brython.html?src=https://gist.githubusercontent.com/yun-0705/d12920f1d4fcd28dbd186a1ea0f052c6/raw/6b7ba4806fa4d6bd4995d9a06debe6696cdf78ef/w15.py">add_avoid_8</a>)第四題</p>
-<p></p><br />HW 1 Exam << <a href='HW 1 Exam.html'>Previous</a> <a href='w14_ex.html'>Next</a> >> w14_ex</div>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">def add_avoid_8(start, end):
+    total = 0
+    
+    # 從 start 到 end 遍歷所有數字
+    for num in range(start, end + 1):
+        # 檢查數字是否包含 '8'
+        if '8' not in str(num):
+            total += num  # 累加不包含 '8' 的數字
+    
+    return total
+
+# 計算從 1 到 100 的總和，並避開包含 '8' 的數字
+result = add_avoid_8(1, 100)
+print(result)  # 輸出結果</pre>
+<p><br/><br/></p><br />HW 1 Exam << <a href='HW 1 Exam.html'>Previous</a> <a href='w14_ex.html'>Next</a> >> w14_ex</div>
         
     <!-- footer -->
       <div class="container">
