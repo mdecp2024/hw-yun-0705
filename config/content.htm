@@ -40,7 +40,19 @@
 <p>每六人為一組進行協同程式練習</p>
 <p>透過 Jupyterlab 協同網頁, 輪流指定各組編寫 Topic 1 相關的程式練習, 以及網頁內容 (localhost 與 Codespaces 環境)編輯.</p>
 <h3>w15</h3>
-<h3>w14_ex</h3>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import window
+
+# 這個函數用來計算 1 加到 100
+def calculate_sum():
+    total = sum(range(1, 101))  # 使用 Python 的 sum 函數，計算從 1 到 100 的總和
+    print(f"1 加到 100 的總和是: {total}")
+    window.alert(f"1 加到 100 的總和是: {total}")  # 在瀏覽器彈出顯示結果
+
+# 呼叫函數計算並顯示結果
+calculate_sum()
+
+</pre>
+<p></p><h3>w14_ex</h3>
 <p>三個圓相切</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import html
 from browser import document as doc
