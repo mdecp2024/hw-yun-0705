@@ -189,27 +189,19 @@ print(result)  # 輸出 2550</pre>
 result = add_avoid_8(1, 100)
 print(result)  # 輸出結果</pre>
 <p>(<a href="https://mdecp2024.github.io/hw-yun-0705/content/Brython.html?src=https://gist.githubusercontent.com/yun-0705/703c44c97f08122e9129372b0c231528/raw/c41384e6e28f28ff1e86b4933a291d8f001b68a8/w15.py">w15第五題</a>)</p>
-<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">def add_only_even(init, addto):
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">def calculate_sum():
     total = 0
-    for i in range(init, addto + 1):
-        if i % 2 == 0:  # 檢查是否是偶數
-            total += i
-    print(f"Even sum: {total}")
-    return total
+    valid_numbers = []  # 用來存儲符合條件的數字
+    for i in range(1, 101):  # 從 1 遍歷到 100
+        # 檢查數字中是否包含 '8' 或 '3'
+        if '8' not in str(i) and '3' not in str(i):
+            total += i  # 累加符合條件的數字
+            valid_numbers.append(i)  # 把符合條件的數字加到列表中
+    print(f"符合條件的數字是: {valid_numbers}")  # 顯示符合條件的數字
+    print(f"總和是: {total}")  # 顯示最終總和
 
-def avoid8(init, addto):
-    total = 0
-    for i in range(init, addto + 1):
-        if "8" in str(i):  # 判斷數字中是否包含 '8'
-            pass
-        else:
-            total += i
-    print(f"Sum avoiding 8: {total}")
-    return total
-
-# 呼叫函式並計算
-add_only_even(1, 100)  # 計算 1 到 100 的偶數總和
-avoid8(1, 100)         # 計算 1 到 100 的總和，避開包含 '8' 的數字</pre>
+# 呼叫函數執行
+calculate_sum()</pre>
 <p><br/><br/></p><br />HW 1 Exam << <a href='HW 1 Exam.html'>Previous</a> <a href='w14_ex.html'>Next</a> >> w14_ex</div>
         
     <!-- footer -->
