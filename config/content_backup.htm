@@ -733,6 +733,143 @@ draw_hollow_circle(10, 10, 5)
 <p>透過 Jupyterlab 協同網頁, 輪流指定各組編寫 HW 2 相關的程式練習, 以及網頁內容 (localhost 與 Codespaces 環境)編輯.</p>
 <h3>w16_exam1</h3>
 <p>(<a href="https://mdecp2024.github.io/hw-yun-0705/content/Brython.html?src=https://gist.githubusercontent.com/yun-0705/72fa068dbf64ab9700262eeef59d4c83/raw/c269b15fa1a8536ba28d667065c2823061866850/w16.py">w16第一題</a>)</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import document, html
+import math
+
+# 取得畫布元素
+canvas = html.CANVAS(width=1000, height=500)  # 增加畫布的寬度
+document &lt;= canvas
+ctx = canvas.getContext("2d")
+
+# 原點 (31, 49)
+origin_x = 31
+origin_y = 49
+
+# 畫X軸和Y軸
+def draw_axes():
+    ctx.beginPath()
+    # X軸 (向右為正)
+    ctx.moveTo(origin_x, origin_y)
+    ctx.lineTo(1000, origin_y)  # 向右畫線，延伸到畫布的最右邊
+    # Y軸 (向下為正)
+    ctx.moveTo(origin_x, origin_y)
+    ctx.lineTo(origin_x, 500)  # 向下畫線，延伸到畫布的最下邊
+    ctx.strokeStyle = "black"
+    ctx.lineWidth = 2
+    ctx.stroke()
+
+# 標註原點座標
+def label_origin():
+    ctx.font = "12px Arial"
+    ctx.fillStyle = "black"
+    ctx.fillText(f"({origin_x}, {origin_y})", origin_x + 5, origin_y - 5)
+
+# 畫六角形
+def draw_hexagon(x, y):
+    ctx.beginPath()
+    radius = 40
+    # 繪製六個角
+    for i in range(6):
+        angle = math.radians(60 * i)  # 每個角度60度
+        cx = x + radius * math.cos(angle)
+        cy = y + radius * math.sin(angle)
+        if i == 0:
+            ctx.moveTo(cx, cy)  # 設定起始點
+        else:
+            ctx.lineTo(cx, cy)  # 連接每個點
+    ctx.closePath()
+    ctx.strokeStyle = "blue"
+    ctx.fillStyle = "lightblue"
+    ctx.fill()
+    ctx.stroke()
+
+# 畫對稱的菱形
+def draw_rhombus(x, y):
+    ctx.beginPath()
+    ctx.moveTo(x, y - 30)  # 左上
+    ctx.lineTo(x - 20, y)  # 中上
+    ctx.lineTo(x, y + 30)  # 左下
+    ctx.lineTo(x + 20, y)  # 中下
+    ctx.closePath()
+    ctx.strokeStyle = "red"
+    ctx.fillStyle = "pink"
+    ctx.fill()
+    ctx.stroke()
+
+# 畫正三角形
+def draw_equilateral_triangle(x, y):
+    side_length = 60
+    x1 = x
+    y1 = y
+    x2 = x + side_length
+    y2 = y
+    x3 = x + side_length / 2
+    y3 = y - (math.sqrt(3) / 2) * side_length  # 高度使用公式: sqrt(3)/2 * 邊長
+
+    ctx.beginPath()
+    ctx.moveTo(x1, y1)
+    ctx.lineTo(x2, y2)
+    ctx.lineTo(x3, y3)
+    ctx.closePath()
+    ctx.strokeStyle = "green"
+    ctx.fillStyle = "lightgreen"
+    ctx.fill()
+    ctx.stroke()
+
+# 畫圓形
+def draw_circle(x, y):
+    ctx.beginPath()
+    ctx.arc(x, y, 35, 0, 2 * math.pi)
+    ctx.closePath()
+    ctx.strokeStyle = "purple"
+    ctx.fillStyle = "lavender"
+    ctx.fill()
+    ctx.stroke()
+
+# 畫正方形
+def draw_square(x, y):
+    ctx.beginPath()
+    ctx.rect(x, y - 20, 40, 40)
+    ctx.closePath()
+    ctx.strokeStyle = "orange"
+    ctx.fillStyle = "yellow"
+    ctx.fill()
+    ctx.stroke()
+
+# 畫長方形
+def draw_rectangle(x, y):
+    ctx.beginPath()
+    ctx.rect(x, y - 30, 120, 60)  # 調整長方形的大小和位置
+    ctx.closePath()
+    ctx.strokeStyle = "brown"
+    ctx.fillStyle = "lightbrown"
+    ctx.fill()
+    ctx.stroke()
+
+# 設定圖形的間距
+spacing = 100  # 所有圖形之間的間距
+spacing_between_rhombus_and_triangle = 60  # 縮小菱形和三角形之間的間距
+spacing_between_square_and_circle = 40  # 讓正方形和圓形之間保持較大間距
+spacing_between_square_and_rectangle = 60  # 增加正方形和長方形之間的間距
+start_x = origin_x + 80  # 設定起始位置
+
+# 繪製所有內容
+def draw_all():
+    draw_axes()
+    label_origin()
+
+    # 按順序繪製圖形，調整菱形和三角形之間的間距
+    draw_hexagon(start_x, origin_y + 100)
+    draw_rhombus(start_x + spacing, origin_y + 100)
+    # 將三角形往下移動30
+    draw_equilateral_triangle(start_x + spacing + spacing_between_rhombus_and_triangle, origin_y + 100 + 30)  # 調整y座標，讓三角形往下移動10
+    
+    draw_circle(start_x + 2 * spacing + spacing_between_rhombus_and_triangle + 20, origin_y + 100)  # 增加圓形與三角形的間距
+    draw_square(start_x + 2 * spacing + spacing_between_rhombus_and_triangle + 20 + spacing_between_square_and_circle + 10, origin_y + 100)  # 正方形與圓形之間的間距
+    draw_rectangle(start_x + 3 * spacing + spacing_between_rhombus_and_triangle + spacing_between_square_and_circle + 10 + spacing_between_square_and_rectangle - 60, origin_y + 100)  # 長方形往左移動40
+
+# 開始繪製
+draw_all()</pre>
 <!-- 導入 brython 程式庫 -->
 <p>
 <script src="/static/brython.js"></script>
@@ -894,7 +1031,7 @@ draw_all()
 <h2>HW 3 Exam</h2>
 <p>每六人為一組進行協同程式練習</p>
 <p>透過 Jupyterlab 協同網頁, 輪流指定各組編寫 HW 3 相關的程式練習, 以及網頁內容 (localhost 與 Codespaces 環境)編輯.</p>
-<h1>HW 4</h1>
+<h3><strong>w16_exam2</strong></h3><h1>HW 4</h1>
 <h4>主題: 利用 Python 控制機電模擬系統 (20%)</h4>
 <p style="padding-left: 30px;">利用 <a href="https://solvespace.com/">https://solvespace.com/</a> 建立機械系統零組件</p>
 <p style="padding-left: 30px;">利用 <a href="https://www.coppeliarobotics.com/">CoppeliaSim</a> 建立機電模擬系統</p>
