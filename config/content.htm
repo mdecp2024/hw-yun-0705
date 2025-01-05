@@ -622,15 +622,74 @@ def scan_and_draw():
 # 開始掃描和著色
 scan_and_draw()
 </script>
-<h3>w12</h3>
+<h3>w12_hw</h3>
 <p>簡易for迴圈程式(<a href="https://mdecp2024.github.io/hw-yun-0705/content/Brython.html?src=https://gist.githubusercontent.com/yun-0705/4e94b1a5f404a4210410446c0aa7ca36/raw/a23a585726f1c964e8f41313c7e5e42399d169ad/w12.py">for迴圈</a>)</p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/jmWgUgZ6WI8" width="560"></iframe></p>
 <p>程式:</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">n=10
 for i in range(n):
     print("現在的數字是",(i))</pre>
-<p></p>
-<h3>w11_hw</h3>
+<p>筆記：</p>
+<p>(<a href="https://mdecp2024.github.io/hw-yun-0705/content/Brython.html?src=https://gist.githubusercontent.com/yun-0705/a8af06fdbf7fc6a1e54892af4bed269a/raw/75307e19bfda40a4d34c77edfaac1ead7210f6ae/w12.py">題目一</a>)</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">"this is a string"
+'everything you write in between quotes is a string'
+help("input")
+input("What's your name?")
+input("Where are you from?")
+print (" /\_/\   ")
+print (" &gt;^.^&lt;   ")
+print ("  / \    ")
+print (" (___)___")
+help("print")</pre>
+<p>(<a href="https://mdecp2024.github.io/hw-yun-0705/content/Brython.html?src=https://gist.githubusercontent.com/yun-0705/2df0b68de6672f9f131d28942fee2d02/raw/51de02d88c1f36044da638b5f98b556b59683d8f/w12.py">題目二</a>)</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">first_name = "Fernando"
+last_name  = "Pérez"
+print (first_name)
+print (last_name)
+name = input("What's your name?")
+favorite_food = input ("What is your favorite food?")
+print ("Hi! My name is " + name)
+print ("My favorite food is " + favorite_food) 
+print (name + "'s favorite food is " + favorite_food)</pre>
+<p>(<a href="https://mdecp2024.github.io/hw-yun-0705/content/Brython.html?src=https://gist.githubusercontent.com/yun-0705/793d0d5f8154c0cb62ea929c7239b6ab/raw/4aa7f159fb2fba41108a9f6cd72d4753f98b0900/w12.py">題目三</a>)</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">programming_books = ["Learn python", "Python for all",  "Intro to python"]
+print (programming_books)
+wanted_book = input("Hi! What book would you like to buy?")
+print (wanted_book)
+if wanted_book in programming_books:
+    print ("Yes, we sell it!")
+else:
+    print ("Sorry, we don't sell that book")</pre>
+<p>(<a href="https://mdecp2024.github.io/hw-yun-0705/content/Brython.html?src=https://gist.githubusercontent.com/yun-0705/10b17c578990e978b6f91a2260c47d84/raw/cc85bc6ee55d3a3f2c9b2ea8530d5309f9060d94/w12.py">第四題</a>)</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">shopping_list = ["carrots", "chocolate", "olives"]
+print (shopping_list)
+new_item = input("What else do I have to buy?")
+ 
+if new_item in shopping_list:
+    print (new_item + " is/are already in the shopping list")
+    print (shopping_list) 
+else:
+    shopping_list.append(new_item)
+    print (shopping_list)
+     
+item_to_remove = input("What do I have to remove?")
+ 
+if item_to_remove in shopping_list:
+    shopping_list.remove(item_to_remove)
+    print (shopping_list)
+else:
+    print (item_to_remove + " is/are not in the list")
+    print (shopping_list)</pre>
+<p>(<a href="https://mdecp2024.github.io/hw-yun-0705/content/Brython.html?src=https://gist.githubusercontent.com/yun-0705/c6299e23f57bc9f125d54d59f338c0e0/raw/6de56d06b509d8ec9e4944dfa8414fa20461fbac/w12.py">第五題</a>)</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">todays_menu = ["burger", "salad", "coke"]
+print(todays_menu)
+side_dish_index = todays_menu.index("salad")
+print(side_dish_index)
+todays_menu.pop(side_dish_index)
+print(todays_menu)
+todays_menu.insert(side_dish_index, "fries")  # 修正變數名稱
+print(todays_menu)</pre>
+<p></p><h3>w11_hw</h3>
 <p><span>題目一:(<a href="https://mdecp2024.github.io/hw-yun-0705/content/Brython.html?src=https://gist.githubusercontent.com/yun-0705/ce93a836008e04479727eeba5c8d1e9d/raw/0533bb40517b70c105a313b88913f39f61870ea7/w11-hw.py">以"*"畫出空心圓</a>)</span></p>
 <p><span>心得:利用ai打出需要的brython程式，過程中嘗試了解ai所打出程式的意思，但有理解的地方不多，還需要多加努力。</span></p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/tccSgnxZb5w" width="560"></iframe></p>
